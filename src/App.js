@@ -1,26 +1,41 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+// Below is the import for the functional components
+// import react from 'react';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+//import for class components
+import React, { Component } from 'react';
+//import people from people
+import People from './people';
+
+import AddPerson from './addPerson';
+
+
+class App extends Component{
+  
+  state = {
+    listOfPeople: [
+      {name: "KaiHhhA", age: 76, favoriteFood: "Chicken nuggets", id: 1},
+      {name: "Austin", age: 2, favoritFood: "Nasty", id: 2},
+      {name: "DeeJay", age: 28, favoriteFood:"Burrito", id: 3}
+    ]
+  }
+
+  addPerson = (person) => {
+    console.log(person)
+  }
+
+  render() {
+    return(
+      <div className="App">
+        <h1>Jamie isn't like the other girlz</h1>
+        <p>Howdy y'all!</p>
+        {/* importing the people component into JSX */}
+        {/* We pass data from one component to another with props */}
+        {/* We pass props by giving our components attributes */}
+        <People arrayOfPeople={this.state.listOfPeople} />
+        <AddPerson addMeLoser={this.addPerson} />
+      </div>
+    )
+  }
 }
 
 export default App;
